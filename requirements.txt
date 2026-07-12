@@ -1,0 +1,23 @@
+# Core scientific stack
+numpy>=1.24
+pandas>=2.0
+scikit-learn>=1.3
+polars>=0.20            # fast parquet loading (optional; pandas fallback provided)
+
+# Retrieval
+rank-bm25>=0.2.2
+sentence-transformers>=2.6   # BGE dense retriever + MiniLM cross-encoder
+
+# Generation
+torch>=2.1
+transformers>=4.40
+sentencepiece>=0.1.99  # required by the FLAN-T5 tokenizer
+accelerate>=0.28
+
+# LoRA fine-tuning
+peft>=0.10
+trl>=0.8
+datasets>=2.18
+
+# Utilities
+tqdm>=4.66
