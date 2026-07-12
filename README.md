@@ -92,74 +92,7 @@ adm-lt-hackathon-qa/
 The whole system lives in a single, self-contained notebook: data loading,
 retrieval, LoRA fine-tuning, dev-set evaluation and submission generation.
 
-## How to run
-
-The notebook was developed and run on **Kaggle with a Tesla T4 GPU**.
-
-1. Open `Notebook_NLP_LOSPOLLOSHERMANOS.ipynb` on Kaggle (or in Jupyter with a GPU).
-2. Attach the competition dataset and the LoRA adapter dataset as inputs. The first
-   cells auto-discover the data, evidence corpus and adapter under `/kaggle/input`.
-3. Run the cells top to bottom. The dependency install is handled by the first cell:
-
-   ```python
-   !pip install polars rank_bm25 transformers peft accelerate \
-                scikit-learn sentence-transformers sentencepiece -q
-   ```
-
-   For a local environment, `requirements.txt` lists the same stack (add `trl` and
-   `datasets`, already included, for the LoRA fine-tuning cell).
-
-### Expected input layout
-
-```
-/kaggle/input/
-├── <competition>/
-│   ├── train.parquet
-│   ├── dev.parquet
-│   ├── test.csv
-│   ├── sample_submission.csv
-│   └── evidence_corpus/
-│       ├── db_0.jsonl
-│       └── ...
-└── <lora-adapter-dataset>/      # adapter_config.json + adapter weights
-```
-
-### Notebook flow
-
-| Cell(s) | Purpose |
-|---------|---------|
-| 1–2     | Install dependencies and imports |
-| 3–4     | Locate inputs; load train/dev/test and the evidence corpus |
-| 5       | LoRA fine-tuning of the Qwen component (documented / reproducible) |
-| 6–7     | Load models (BGE, MiniLM, FLAN-T5, Qwen+LoRA); train the router |
-| 8–9     | Utility functions and per-query-type answer functions |
-| 10      | Precompute corpus embeddings |
-| 11      | Dev-set evaluation with the query-type-aware metric |
-| 12      | Test-set inference and submission file |
-
-## Evaluation
-
-Cell 11 prints a per-type breakdown and the macro-average on the dev set:
-
-| Query type    | Metric       | Dev score |
-|---------------|--------------|-----------|
-| Lookup        | exact match  | _TODO_    |
-| Aggregation   | exact match  | _TODO_    |
-| Count         | accuracy     | _TODO_    |
-| Boolean       | accuracy     | _TODO_    |
-| Set ops       | set F1       | _TODO_    |
-| **Macro avg** |              | **_TODO_**|
-
-> Fill in the numbers from your own run — they are intentionally left blank here
-> rather than hard-coded.
 
 ## Team
 
-- **Denise Brancaleone** (2048469)
-- **Matías Cerda** (2242483)
-- **Gabriele Manfrè** (1959815)
-- **Gianluca Pasquinelli** (2075459)
-
-## License
-
-Released under the [MIT License](LICENSE).
+Denise Brancaleone · Matías Cerda · Marco Restuccia · Gianluca Pasquinelli
