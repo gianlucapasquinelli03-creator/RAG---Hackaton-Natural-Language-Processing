@@ -95,4 +95,4 @@ retrieval, LoRA fine-tuning, dev-set evaluation and submission generation.
 
 ## Team
 
-Denise Brancaleone · Matías Cerda · Marco Restuccia · Gianluca Pasquinelli
+Denise Brancaleone · Matías Cerda · Gianluca Pasquinelli · Marco Restuccia
